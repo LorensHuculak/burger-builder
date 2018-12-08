@@ -1,11 +1,15 @@
 import React from 'react';
 
-const buildControl = (props) => {
-<div>
-    <div>{props.label}</div>
-    <button>Less</button>
-    <button>More</button>
-</div>
-}
+import './BuildControl.css';
 
-export default buildcontrol;
+const buildControl = (props) => (
+    <div className="BuildControl">
+        <div className="Label">{props.label}</div>
+        <button 
+            className="Less" onClick={props.removed} disabled={props.disabled}>-</button>
+        <button 
+            className="More" onClick={props.added}>+</button>
+    </div>
+);
+
+export default buildControl;
