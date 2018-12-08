@@ -16,3 +16,10 @@ code {
 p {
   color: #444;
 }
+
+.PriceSpan {
+  background-color: #85b308;
+  color: white;
+  border-radius: 5px;
+  padding: 7px;
+}

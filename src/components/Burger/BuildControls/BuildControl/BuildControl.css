@@ -16,14 +16,14 @@
     cursor: pointer;
     outline: none;
     border-radius: 5px;
-    border: 2px solid #d2d6d9;
+    border: 2px solid #dce0e3;
 }
 
 
 .BuildControl button:disabled {
-    background-color: #F2F2F4;
-    border: 2px solid #b4b8ba;
-    color: #222;
+    background-color: #fff;
+    border: 2px solid #dce0e3;
+    color: #b4b8ba;
     cursor: default;
 }
 
@@ -40,14 +40,14 @@
 }
 
 .BuildControl .Less {  
-    background-color: #d2d6d9;
+    background-color: #dce0e3;
     color:#222;
     font-weight: 600;
     font-size: 1.2em;
 }
 
 .BuildControl .More {
-    background-color: #d2d6d9;
+    background-color: #dce0e3;
     color:#222;
     font-weight: 600;
     font-size: 1.2em;
