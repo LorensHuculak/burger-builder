@@ -18,10 +18,10 @@
 }
 
 .Seeds1 {
-    width: 10%;
+    width: 7.5%;
     height: 15%;
     position: absolute;
-    background-color: white;
+    background-color: #D5D3BA;
     left: 30%;
     top: 50%;
     border-radius: 40%;
@@ -34,7 +34,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: white;
+    background-color: #D5D3BA;
     left: -170%;
     top: -260%;
     border-radius: 40%;
@@ -47,7 +47,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: white;
+    background-color: #D5D3BA;
     left: 180%;
     top: -50%;
     border-radius: 40%;
@@ -56,10 +56,10 @@
   }
 
   .Seeds2 {
-    width: 10%;
+    width: 7.5%;
     height: 15%;
     position: absolute;
-    background-color: white;
+    background-color: #D5D3BA;
     left: 64%;
     top: 50%;
     border-radius: 40%;
@@ -72,7 +72,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: white;
+    background-color: #D5D3BA;
     left: 150%;
     top: -130%;
     border-radius: 40%;

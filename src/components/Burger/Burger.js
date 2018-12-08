@@ -1,6 +1,7 @@
 import React from 'react';
 import './Burger.css';
-import BurgerIngredient from './BurgerIngredient/BurgerIngredient'
+import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
+import Logo from '../Layout/Logo/Logo2';
 
 const burger = (props) => {
     
@@ -15,9 +16,8 @@ const burger = (props) => {
     }, []); 
 
     if (transformedIngredients.length === 0) {
-transformedIngredients = <div><p>BUILD</p>
-<p>YOUR OWN</p>
-<p>BURGER</p></div>;
+transformedIngredients = <Logo />;
+;
     }
 
 return(

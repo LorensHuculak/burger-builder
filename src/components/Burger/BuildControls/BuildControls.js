@@ -12,7 +12,7 @@ const controls = [
 const buildControls = (props) => (
 
     <div className="BuildControls">
-    <p>Current Price <strong>{props.totalPrice.toFixed(2)} ETH</strong></p>
+    <p><strong> {props.totalPrice.toFixed(2)} <i className="fab fa-ethereum "></i> </strong></p>
 {controls.map(ctrl => (
      <BuildControl 
      key={ctrl.label} 
@@ -22,6 +22,10 @@ const buildControls = (props) => (
      removed={() => props.ingredientRemoved(ctrl.type)}
      />
     ))}
+    <button 
+    className="OrderButton"
+    disabled={!props.purchasable}
+    onClick={props.ordered}>Add to Cart</button>
     </div>
 );
 
