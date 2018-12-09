@@ -1,32 +1,35 @@
 .BreadBottom {
-    height: 13%;
+    height: 50px;
     width: 80%;
-    background: linear-gradient(#F08E4A, #e27b36);
-    border-radius: 0 0 30px 30px;
-    box-shadow: inset -15px 0 #c15711;
+    background: linear-gradient(#CB661B, #D27135);
+    border-radius: 10px 10px 30px 30px;
+    box-shadow: inset -15px 0 #ab5617;
     margin: 0px auto;
+
+ 
 }
 
 .BreadTop {
-    height: 20%;
+    height: 75px;
     width: 80%;
-    background: linear-gradient(#bc581e, #e27b36);
+    background: linear-gradient(#CB661B, #D27135);
     border-radius: 50% 50% 10px 10px;
-    box-shadow: inset -15px 0 #c15711;
+    box-shadow: inset -15px 0 #ab5617;
     margin: 0px auto;
     position: relative;
+
 }
 
 .Seeds1 {
-    width: 7.5%;
-    height: 15%;
+    width: 6%;
+    height: 13%;
     position: absolute;
-    background-color: #D5D3BA;
+    background-color: #EEE6B7;
     left: 30%;
     top: 50%;
     border-radius: 40%;
     transform: rotate(-20deg);
-    box-shadow: inset -2px -3px #c9c9c9;
+    box-shadow: inset -2px -3px #CC893F;
 }
 
 .Seeds1:after {
@@ -34,12 +37,12 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: #D5D3BA;
+    background-color: #EEE6B7;
     left: -170%;
     top: -260%;
     border-radius: 40%;
     transform: rotate(60deg);
-    box-shadow: inset -1px 2px #c9c9c9;
+    box-shadow: inset -1px 2px #CC893F;
   }
   
 .Seeds1:before {
@@ -47,24 +50,24 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: #D5D3BA;
+    background-color: #EEE6B7;
     left: 180%;
     top: -50%;
     border-radius: 40%;
     transform: rotate(60deg);
-    box-shadow: inset -1px -3px #c9c9c9;
+    box-shadow: inset -1px -3px #CC893F;
   }
 
   .Seeds2 {
-    width: 7.5%;
-    height: 15%;
+    width: 6%;
+    height: 13%;
     position: absolute;
-    background-color: #D5D3BA;
+    background-color: #EEE6B7;
     left: 64%;
     top: 50%;
     border-radius: 40%;
     transform: rotate(10deg);
-    box-shadow: inset -3px 0 #c9c9c9;
+    box-shadow: inset -3px 0 #CC893F;
   }
   
   .Seeds2:before {
@@ -72,28 +75,29 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: #D5D3BA;
+    background-color: #EEE6B7;
     left: 150%;
     top: -130%;
     border-radius: 40%;
     transform: rotate(90deg);
-    box-shadow: inset 1px 3px #c9c9c9;
+    box-shadow: inset 1px 3px #CC893F;
   }
   
 
 .Meat {
     width: 80%;
     height: 8%;
-    background: linear-gradient(#7f3608, #702e05);
+    background: linear-gradient(#673A1A, #5A3621);
     margin: 0px auto;
-    border-radius: 15px;
+    border-radius: 8px;
+
 }
 
 .Cheese {
     width: 90%;
     height: 4.5%;
     margin: 0px auto;
-    background: linear-gradient(#f4d004, #d6bb22);
+    background: linear-gradient(#FFC107, #FF8F00);
     border-radius: 20px;
 }
 
@@ -101,13 +105,13 @@
     width: 85%;
     height: 7%;
     margin: 0px auto;
-    background: linear-gradient(#228c1d, #91ce50);
+    background: linear-gradient(#558B2F, #7AB444);
     border-radius: 20px;
 }
 
 .Bacon {
     width: 80%;
     height: 3%;
-    background: linear-gradient(#bf3813, #c45e38);
+    background: linear-gradient(#BF360C, #FF5722);
     margin: 0px auto;
 }

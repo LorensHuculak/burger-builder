@@ -2,8 +2,11 @@
     padding: 8px;
     height: 100%;
     margin-top: 35px;
+  
 }
 
 .Logo img {
     height: 62%;
+    border-radius: 7px;
 }
+

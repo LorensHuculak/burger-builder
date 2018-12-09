@@ -50,8 +50,4 @@ type: propTypes.string.isRequired
 
 
 
-const burgerIngredient = (props) => {
-
-}
-
 export default BurgerIngredient;
