@@ -18,14 +18,14 @@
 color: #222;
 font-size: 1.2em;
 display: inline;
-width: 300px; 
+width: 290px; 
 display: inline;
 }
 
 .totalPrice p {
     display: inline;
     justify-content: space-between;
-    margin-right: 135px;
+    margin-right: 117px;
 }
 
 
