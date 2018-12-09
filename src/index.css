@@ -18,6 +18,7 @@ p {
 }
 
 .PriceSpan {
+  margin-left: 3px;
   background-color: #85b308;
   color: white;
   border-radius: 5px;

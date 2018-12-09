@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
 .BuildControl button {
@@ -17,7 +17,10 @@
     outline: none;
     border-radius: 5px;
     border: 2px solid #dce0e3;
+    
 }
+
+
 
 
 .BuildControl button:disabled {
@@ -35,7 +38,7 @@
 
 .Label {
     padding: 10px;
-    font-weight: bold;
+    font-weight: 500;
     width: 80px;
 }
 
@@ -62,4 +65,10 @@
 .BuildControl .More:hover,.BuildControl .More:active {
     background-color: #b4b8ba;
     color: white;
+}
+
+.ControlPrice {
+    font-weight: 300;
+    color: #777;
+    font-size: 0.9em;
 }

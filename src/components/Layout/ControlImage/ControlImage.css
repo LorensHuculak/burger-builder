@@ -1,0 +1,23 @@
+.ControlImage, .ControlImageDisabled {
+height: 40px;;
+margin-right: 10px;
+
+ 
+
+  
+}
+
+.ControlImage img {
+    height: 100%;
+    border-radius: 100%;
+border: 2px solid #f9e02a;
+   
+
+}
+
+.ControlImageDisabled img {
+    height: 100%;
+    border-radius: 100%;
+    border: 2px solid #dbdfe2;
+}
+

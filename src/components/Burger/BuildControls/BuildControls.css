@@ -7,9 +7,17 @@
     box-shadow: 0 2px 1px #ccc;
     margin: auto;
     padding: 10px 0;
-    height: 36.7vh;
+    height: 38.8vh;
+    padding-bottom: 35px;
 
 
+}
+
+.totalPrice {
+margin-left: 150px;
+color: #222;
+font-size: 1.2em;
+ 
 }
 
 .OrderButton {
@@ -22,6 +30,9 @@ font-weight: bold;
     font-family: inherit;
     font-size: 1.2em;
     padding: 15px 30px;
+    padding-top: 15px;
+    padding-bottom: 25px;
+   
     
     width: 300px;
     border-radius: 7.5px;
@@ -34,10 +45,10 @@ font-weight: bold;
 }
 
 .OrderButton:disabled {
-    background-color: #C7C6C6;
+    background-color: #dbdfe2;
     cursor: not-allowed;
-    border: 1px solid #ccc;
-    color: #888888;
+
+    color: #B3B6B8;
 }
 
 .OrderButton:not(:disabled) {

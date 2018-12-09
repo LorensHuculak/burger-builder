@@ -19,7 +19,7 @@ return(
 {ingredientSummary}
     </ul>
 
-<p>Burger Price <span className="PriceSpan"> {props.price.toFixed(2)} <i className="fab fa-ethereum "> </i> </span> </p>
+<p>Total Price <span className="PriceSpan"> {props.price.toFixed(2)} <i className="fab fa-ethereum "> </i> </span> </p>
 
 
 <Button btnType="Danger" clicked={props.purchaseCanceled}><i className="fas fa-arrow-left"></i></Button>

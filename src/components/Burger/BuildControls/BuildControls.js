@@ -1,6 +1,7 @@
 import React from 'react';
 import './BuildControls.css';
 import BuildControl from './BuildControl/BuildControl';
+import ControlImage from '../../Layout/ControlImage/ControlImage';
 
 const controls = [
     {label:'Meat', type:'meat'},
@@ -12,7 +13,7 @@ const controls = [
 const buildControls = (props) => (
 
     <div className="BuildControls">
-    <p><strong> {props.totalPrice.toFixed(2)} <i className="fab fa-ethereum "></i> </strong></p>
+    <p className="totalPrice"><strong> {props.totalPrice.toFixed(2)} <i className="fab fa-ethereum "></i> </strong></p>
 {controls.map(ctrl => (
      <BuildControl 
      key={ctrl.label} 
