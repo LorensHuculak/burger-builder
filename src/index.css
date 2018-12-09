@@ -25,3 +25,13 @@ p {
   padding: 7px;
 }
 
+hr {
+  height: 5px;
+  background-color: #f9e02a;
+  width: 100px;
+margin-left: 0;
+  border: none;
+
+
+}
+

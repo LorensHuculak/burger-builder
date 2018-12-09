@@ -1,5 +1,5 @@
 .Toolbar {
-   height: 8vh;
+   height: 50px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -11,6 +11,12 @@
     padding: 0 60px;
     box-sizing: border-box;
     z-index: 90;
+}
+
+@media (min-width: 500px) {
+    .Toolbar {
+        height: 8vh;
+    }
 }
 
 .Toolbar nav {
