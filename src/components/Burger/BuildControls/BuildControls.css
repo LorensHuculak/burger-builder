@@ -14,11 +14,22 @@
 }
 
 .totalPrice {
-margin-left: 150px;
+
 color: #222;
 font-size: 1.2em;
- 
+display: inline;
+width: 300px; 
+display: inline;
 }
+
+.totalPrice p {
+    display: inline;
+    justify-content: space-between;
+    margin-right: 135px;
+}
+
+
+
 
 .OrderButton {
     margin-top: 22px;

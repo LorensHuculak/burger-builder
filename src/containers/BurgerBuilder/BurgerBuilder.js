@@ -109,6 +109,7 @@ for(let key in disabledInfo) {
                 purchasable={this.state.purchaseable}
                 totalPrice={this.state.totalPrice}
                 ordered={this.purchaseHandler}
+                ingredients={this.state.ingredients}
                 />
             </Aux>
         );

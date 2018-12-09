@@ -39,6 +39,8 @@ class BuildControl extends Component {
             default:
             picture = null;    
         }
+
+       
     
       
 
@@ -54,6 +56,7 @@ class BuildControl extends Component {
                 <button 
                     className="Less" onClick={this.props.removed} disabled={this.props.disabled}>-</button>
         
+            <p className="Counter">{this.props.ingredientCount}</p>
                 <button 
                     className="More" onClick={this.props.added}>+</button>
             </div>
