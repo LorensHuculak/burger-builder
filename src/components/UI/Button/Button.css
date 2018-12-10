@@ -14,6 +14,17 @@
     border-radius: 7.5px;
 }
 
+.Button:disabled {
+    background-color: #dbdfe2;
+    cursor: not-allowed;
+
+    color: #B3B6B8;
+}
+
+.Button:not(:disabled) {
+    animation: enable 0.3s linear;
+}
+
 
 
 .Success {
