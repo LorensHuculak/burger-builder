@@ -189,12 +189,12 @@ class Auth extends Component {
   };
 
   handleSignMessage = () => {
-
     web3 = new Web3(window.web3.currentProvider);
     const publicAddress = web3.eth.coinbase.toLowerCase();
+
     return new Promise((resolve, reject) =>
       web3.personal.sign(
-        web3.fromUtf8(`I am signing my one-time nonce:`),
+        web3.fromUtf8(`I am signing my one-time nonce: 6243`),
         publicAddress,
         (err, signature) => {
           if (err) return reject(err);

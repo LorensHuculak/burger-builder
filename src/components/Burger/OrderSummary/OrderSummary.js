@@ -15,7 +15,7 @@ class OrderSummary extends Component {
         return(
             <Aux>
             <h3>
-               Looks Delicious!
+               Order Summary
             </h3>
             <hr />
             <p className="paragraph">You have ordered the following toppings</p>
@@ -23,11 +23,11 @@ class OrderSummary extends Component {
         {ingredientSummary}
             </ul>
         
-        <p>Total Price <span className="PriceSpan"> {this.props.price.toFixed(2)} <i className="fab fa-ethereum "> </i> </span> </p>
+        <p style={{marginBottom: '35px'}}>Total Price <span className="PriceSpan"> {this.props.price.toFixed(2)} <i className="fab fa-ethereum "> </i> </span> </p>
         
         
         <Button btnType="Danger" clicked={this.props.purchaseCanceled}><i className="fas fa-arrow-left"></i></Button>
-        <Button btnType="Success" clicked={this.props.purchaseContinued }>Order Now</Button>
+        <Button btnType="Success" clicked={this.props.purchaseContinued }>Continue <i className="fas fa-arrow-right" style={{paddingLeft: '15px'}}></i></Button>
             </Aux>
         );
     }

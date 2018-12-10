@@ -14,7 +14,8 @@ class Checkout extends Component {
         //     bacon: 1
         // }
         ingredients: null,
-        price: 0
+        price: 0,
+        disabled: false
     }
 
     componentWillMount () {
@@ -38,12 +39,14 @@ class Checkout extends Component {
 
     checkoutContinuedHandler = () => {
         this.props.history.replace( '/checkout/contact-data' );
+        this.setState({disabled: true});
     }
 
     render () {
         return (
             <div>
                 <CheckoutSummary
+                    disabled={this.state.disabled}
                     ingredients={this.state.ingredients}
                     checkoutCancelled={this.checkoutCancelledHandler}
                     checkoutContinued={this.checkoutContinuedHandler} />

@@ -13,7 +13,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Your Name'
+                    placeholder: 'Name'
                 },
                 value: '',
                 validation: {
@@ -22,11 +22,25 @@ class ContactData extends Component {
                 valid: false,
                 touched: false
             },
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Email'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    isEmail: true
+                },
+                valid: false,
+                touched: false
+            },
             street: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Street'
+                    placeholder: 'Address'
                 },
                 value: '',
                 validation: {
@@ -39,14 +53,11 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'ZIP Code'
+                    placeholder: 'City'
                 },
                 value: '',
                 validation: {
-                    required: true,
-                    minLength: 5,
-                    maxLength: 5,
-                    isNumeric: true
+                    required: true
                 },
                 valid: false,
                 touched: false
@@ -64,25 +75,12 @@ class ContactData extends Component {
                 valid: false,
                 touched: false
             },
-            email: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'email',
-                    placeholder: 'Your E-Mail'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    isEmail: true
-                },
-                valid: false,
-                touched: false
-            },
+           
             deliveryMethod: {
                 elementType: 'select',
                 elementConfig: {
                     options: [
-                        {value: 'image', displayValue: 'IMAGE'},
+                        {value: 'image', displayValue: 'Image'},
                         {value: 'json', displayValue: 'JSON'}
                     ]
                 },
@@ -179,6 +177,7 @@ class ContactData extends Component {
             <form onSubmit={this.orderHandler}>
                 {formElementsArray.map(formElement => (
                     <Input 
+                   
                         key={formElement.id}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}

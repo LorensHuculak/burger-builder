@@ -10,18 +10,21 @@
     font-weight: bold;
     display: block;
     margin-bottom: 8px;
+    
 }
 
 .InputElement {
     outline: none;
+    color: #666666;
     border: none;
-    background-color: white;
+    background-color:#F7F7F7;
     font: inherit;
     padding: 10px 10px;
     display: block;
     width: 100%;
     box-sizing: border-box;
-    border-bottom: 2px solid #EDEDED;
+    border-bottom: 2px solid rgb(214, 219, 223);
+    margin-bottom: 10px;
 }
 
 .InputElement:focus {
