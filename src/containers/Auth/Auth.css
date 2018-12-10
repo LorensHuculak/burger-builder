@@ -2,10 +2,37 @@
     margin: 20px auto;
     width: 80%;
     text-align: center;
-
+    box-shadow: 0 2px 3px #eee;
+    border: 1px solid #eee;
+    background-color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    margin-top: 120px;
+    padding: 40px 40px;
+  
+  
+}
+.Auth .Button, .Auth .LoginOR {
+    margin-top: 40px;
+}
+.LoginTitle {
+    font-size: 1.4em;
+    font-weight: 600;
+    text-align: left;
+margin-left: 15px;
+    margin-bottom: 10px;
 }
 
-
+.LoginOR {
+    float: left;
+    font-size: 0.8em;
+    margin-right: 16px;
+    padding-top: 15px;
+    color: #777;
+    font-weight: 600;
+   margin-left: 9px;
+}
 
 @media (min-width: 600px) {
     .Auth {

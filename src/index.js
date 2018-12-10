@@ -4,11 +4,17 @@ import './index.css';
 import {BrowserRouter} from 'react-router-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Web3Provider from 'react-web3';
 
 const app = (
+    
+
     <BrowserRouter>
+  
         <App />
+      
     </BrowserRouter>
+
 );
 
 ReactDOM.render( app, document.getElementById('root'));

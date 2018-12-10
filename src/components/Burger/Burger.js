@@ -22,10 +22,12 @@ transformedIngredients = <Logo />;
     }
 
 return(
+    <div class="BurgerContainer">
     <div className="Burger">
 <BurgerIngredient type="bread-top" />
 {transformedIngredients}
 <BurgerIngredient type="bread-bottom" />
+    </div>
     </div>
 );
 };
