@@ -1,3 +1,10 @@
+.LoginBg {
+    height: 98.6vh;
+    margin-top: -8vh;
+background-color: #F7f7f7;
+    padding-top: 40px;
+}
+
 .Auth {
     margin: 20px auto;
     width: 80%;
@@ -12,6 +19,10 @@
     padding: 40px 40px;
   
   
+}
+
+.Auth .InputElement {
+    background-color: #fff;
 }
 .Auth .Button, .Auth .LoginOR {
     margin-top: 40px;

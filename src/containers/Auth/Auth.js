@@ -20,7 +20,7 @@ class Auth extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'email',
-                    placeholder: 'Mail Address'
+                    placeholder: 'Email'
                 },
                 value: '',
                 validation: {
@@ -292,6 +292,7 @@ handleSignup = ( event ) => {
       
 
         return (
+            <div className="LoginBg">
           <div className='Auth'>
          <p className="LoginTitle">
          Welcome to ReactBurger
@@ -310,6 +311,7 @@ handleSignup = ( event ) => {
 
 
 
+            </div>
             </div>
 
         );

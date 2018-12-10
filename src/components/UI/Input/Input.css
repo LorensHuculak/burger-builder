@@ -34,7 +34,8 @@
 }
 
 .Invalid {
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #E34F25;
+    color: #E34F25;
  
 }
 
