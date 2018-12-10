@@ -51,5 +51,9 @@
    opacity: 0.6;
 
 }
+
+.active {
+    font-weight: 600;
+}
    
 }

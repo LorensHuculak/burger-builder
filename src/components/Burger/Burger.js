@@ -2,6 +2,7 @@ import React from 'react';
 import './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 import Logo from '../Layout/Logo/Logo2';
+import {withRouter} from 'react-router-dom';
 
 const burger = (props) => {
     
