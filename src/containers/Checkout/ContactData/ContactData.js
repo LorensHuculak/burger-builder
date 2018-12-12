@@ -5,6 +5,10 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import './ContactData.css';
 import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/Input';
+import Web3 from 'web3';
+
+let web3 = null;
+let metaMask;
 
 class ContactData extends Component {
     state = {
@@ -93,6 +97,34 @@ class ContactData extends Component {
         loading: false
     }
 
+
+    payBurger = () => {
+       
+        if (!window.web3) {
+          window.alert('Please install MetaMask first.');
+          return;
+        }
+        if (!web3) {
+          // We don't know window.web3 version, so we use our own instance of web3
+          // with provider given by window.web3
+          web3 = new Web3(window.web3.currentProvider);
+        }
+        if (!web3.eth.coinbase) {
+          window.alert('Please activate MetaMask first.');
+          return;
+        }
+
+        const publicAddress = web3.eth.coinbase.toLowerCase();
+        web3.eth.sendTransaction({
+            to: '0x34d8BDC8CA8Bc8F183285EF65ac615ea1305feBa',
+            from: publicAddress,
+            value: web3.toWei('1', 'ether'),
+          }, function (err, transactionHash) {
+           console.log(err);
+          })
+
+}
+
     orderHandler = ( event ) => {
         event.preventDefault();
         this.setState( { loading: true } );
@@ -108,11 +140,15 @@ class ContactData extends Component {
         axios.post( '/orders.json', order )
             .then( response => {
                 this.setState( { loading: false } );
-                this.props.history.push( '/' );
             } )
             .catch( error => {
                 this.setState( { loading: false } );
             } );
+
+                  
+            metaMask = <Button btnType="Danger" clicked={this.payBurger}>Pay with MetaMask <img style={{height: '15px',
+            marginLeft: '10px'}}
+                src='https://metamask.io/img/metamask.png'></img></Button>;
     }
 
     checkValidity(value, rules) {
@@ -165,7 +201,12 @@ class ContactData extends Component {
         this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
     }
 
+
+
+
     render () {
+      
+
         const formElementsArray = [];
         for (let key in this.state.orderForm) {
             formElementsArray.push({
@@ -188,6 +229,7 @@ class ContactData extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
                 <Button btnType="Success" disabled={!this.state.formIsValid}>Order Now</Button>
+               {metaMask}
             </form>
         );
         if ( this.state.loading ) {
@@ -197,6 +239,7 @@ class ContactData extends Component {
             <div className="ContactData">
                 <h4>Enter your Information</h4>
                 {form}
+           
             </div>
         );
     }

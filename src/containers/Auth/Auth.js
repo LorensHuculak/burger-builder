@@ -47,7 +47,10 @@ class Auth extends Component {
         },
         isSignup: true,
         loading: false,
-        users: null,
+        users: {
+            name:'',
+            address:''
+        },
     }
 
     // componentDidMount() {
@@ -136,18 +139,19 @@ class Auth extends Component {
     // METAMASK LOGIN
 
    
+    // handleAuthenticate = ({ publicAddress, signature }) =>
 
-    handleAuthenticate = ({ publicAddress, signature }) =>
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
-      body: JSON.stringify({ publicAddress, signature }),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST'
-    }).then(response => response.json());
+
+    // fetch(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
+    //   body: JSON.stringify({ publicAddress, signature }),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   method: 'POST'
+    // }).then(response => response.json());
 
   handleClick = () => {
-    const { onLoggedIn } = this.props;
+    const { onLoggedIn } = false;
 
     if (!window.web3) {
       window.alert('Please install MetaMask first.');
@@ -163,72 +167,73 @@ class Auth extends Component {
       return;
     }
     const publicAddress = web3.eth.coinbase.toLowerCase();
+    const nonce = Math.random();  
     this.setState({ loading: true });
+   
 
-    // // Look if user with current publicAddress is already present on backend
-    fetch(
-      `${
-        process.env.REACT_APP_BACKEND_URL
-      }/users?publicAddress=${publicAddress}`
-    )
-    //   .then(response => response.json())
+    // Look if user with current publicAddress is already present on backend
+
+    axios.get('/users.json')
+
+      .then(response => {
+
+      })
       // If yes, retrieve it. If no, create it.
       .then(
-        users => (users.length ? users[0] : this.handleSignup(publicAddress))
+        this.handleSignup(publicAddress)
+      
       )
+
+    
       // Popup MetaMask confirmation modal to sign message
-      .then(this.handleSignMessage)
+      .then(
+ 
+        this.handleSignMessage(publicAddress, nonce))
       // Send signature to backend on the /auth route
-      .then(this.handleAuthenticate)
+    //   .then(this.handleAuthenticate)
+
       // Pass accessToken back to parent component (to save it in localStorage)
-      .then(onLoggedIn)
+    //   .then(onLoggedIn)
+    .then (response =>   this.props.history.push( '/' ))
       .catch(err => {
         window.alert(err);
+      
         this.setState({ loading: false });
+      
       });
+    
   };
 
-  handleSignMessage = () => {
-    web3 = new Web3(window.web3.currentProvider);
-    const publicAddress = web3.eth.coinbase.toLowerCase();
-
+  handleSignMessage = (publicAddress, nonce ) => {
     return new Promise((resolve, reject) =>
       web3.personal.sign(
-        web3.fromUtf8(`I am signing my one-time nonce: 6243`),
+        web3.fromUtf8(`I am signing my one-time nonce: ${nonce}`),
         publicAddress,
         (err, signature) => {
           if (err) return reject(err);
           return resolve({ publicAddress, signature });
+      
         }
       )
+
     );
+  
   };
 
- 
+handleSignup = ( publicAddress ) => {
 
-//   handleSignup = publicAddress =>
-//     fetch(`${process.env.REACT_APP_BACKEND_URL}/users`, {
-//       body: JSON.stringify({ publicAddress }),
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       method: 'POST'
-//     }).then(response => response.json());
-
-
-handleSignup = ( event ) => {
-    event.preventDefault();
     this.setState( { loading: true } );
     
-    web3 = new Web3(window.web3.currentProvider);
-    const publicAddress = web3.eth.coinbase.toLowerCase();
+ 
     const user = {
-        address: publicAddress
+        address: publicAddress,
+        name: ''
     }
        
     axios.post( '/users.json', user )
         .then( response => {
-            this.setState( { loading: false } );
+            this.setState( { loading: true } );
+   
         
         } )
         .catch( error => {
@@ -278,7 +283,7 @@ handleSignup = ( event ) => {
         // }
 
         let metaMask = (  <Button
-            clicked={this.handleSignMessage}
+            clicked={this.handleClick}
             btnType="Danger">Login with MetaMask<img style={{height: '15px',
         marginLeft: '10px'}}
             src='https://metamask.io/img/metamask.png'></img></Button> );
