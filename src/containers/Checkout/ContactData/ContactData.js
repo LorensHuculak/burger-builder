@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import './ContactData.css';
 import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/Input';
+import * as actions from '../../../store/actions/index';
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
 import Web3 from 'web3';
 
 let web3 = null;
@@ -94,7 +98,6 @@ class ContactData extends Component {
             }
         },
         formIsValid: false,
-        loading: false
     }
 
 
@@ -125,31 +128,29 @@ class ContactData extends Component {
 
 }
 
-    orderHandler = ( event ) => {
-        event.preventDefault();
-        this.setState( { loading: true } );
-        const formData = {};
-        for (let formElementIdentifier in this.state.orderForm) {
-            formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
-        }
-        const order = {
-            ingredients: this.props.ingredients,
-            price: this.props.price,
-            orderData: formData
-        }
-        axios.post( '/orders.json', order )
-            .then( response => {
-                this.setState( { loading: false } );
-            } )
-            .catch( error => {
-                this.setState( { loading: false } );
-            } );
 
-                  
-            metaMask = <Button btnType="Danger" clicked={this.payBurger}>Pay with MetaMask <img style={{height: '15px',
-            marginLeft: '10px'}}
-                src='https://metamask.io/img/metamask.png'></img></Button>;
+orderHandler = ( event ) => {
+    event.preventDefault();
+
+    const formData = {};
+    for (let formElementIdentifier in this.state.orderForm) {
+        formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
     }
+    const order = {
+        ingredients: this.props.ings,
+        price: this.props.price,
+        orderData: formData
+    }
+
+    this.props.onOrderBurger(order, this.props.token);
+
+    metaMask = <Button btnType="Danger" clicked={this.payBurger}>Pay with MetaMask <img style={{height: '15px',
+    marginLeft: '10px'}}
+        src='https://metamask.io/img/metamask.png'></img></Button>;
+    
+}
+
+  
 
     checkValidity(value, rules) {
         let isValid = true;
@@ -204,6 +205,7 @@ class ContactData extends Component {
 
 
 
+
     render () {
       
 
@@ -245,4 +247,19 @@ class ContactData extends Component {
     }
 }
 
-export default ContactData;
+const mapStateToProps = state => {
+    return {
+        ings: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalPrice,
+        loading: state.order.loading,
+        token: state.auth.token
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));
