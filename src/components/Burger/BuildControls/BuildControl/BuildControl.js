@@ -7,10 +7,10 @@ import BaconImage from '../../../Layout/ControlImage/BaconImage';
 import './BuildControl.css';
 
 const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 1.3,
-    bacon: 0.7
+    salad: 0.05,
+    cheese: 0.04,
+    meat: 0.13,
+    bacon: 0.07
 }
 
 class BuildControl extends Component {

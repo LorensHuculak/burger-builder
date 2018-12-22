@@ -8,12 +8,18 @@ import * as actions from '../../store/actions/index';
 
 class Checkout extends Component {
 
+    state = {
+        disabled: false
+    }
+
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
     }
 
     checkoutContinuedHandler = () => {
         this.props.history.replace( '/checkout/contact-data' );
+        this.setState({disabled: true});
+        
     }
 
     render () {
@@ -26,7 +32,9 @@ class Checkout extends Component {
                     <CheckoutSummary
                         ingredients={this.props.ings}
                         checkoutCancelled={this.checkoutCancelledHandler}
-                        checkoutContinued={this.checkoutContinuedHandler} />
+                        checkoutContinued={this.checkoutContinuedHandler}
+                        disabled={this.state.disabled}
+                      />
                     <Route
                         path={this.props.match.path + '/contact-data'}
                         component={ContactData} />

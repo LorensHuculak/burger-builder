@@ -20,6 +20,7 @@ const rootReducer = combineReducers({
     auth: authReducer
 });
 
+
 const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
@@ -32,5 +33,8 @@ const app = (
     </Provider>
 );
 
+
+
 ReactDOM.render( app, document.getElementById( 'root' ) );
+registerServiceWorker();
 

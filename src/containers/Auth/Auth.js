@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import  './Auth.css';
-import Helpers from '../../store/cookies';
-import Aux from '../../hoc/Aux';
 import Web3 from 'web3';
 import axios from '../../axios-orders';
+import * as actions from '../../store/actions/index';
+import { updateObject, checkValidity } from '../../store/utility';
 
 let web3 = null; // Will hold the web3 instance
 
@@ -53,12 +54,13 @@ class Auth extends Component {
         },
     }
 
-    // componentDidMount() {
-    //     if (!this.props.buildingBurger && this.props.authRedirectPath !== '/') {
-    //         this.props.onSetAuthRedirectPath();
-    //     }
-    // }
+    componentDidMount () {
+        if ( !this.props.buildingBurger && this.props.authRedirectPath !== '/' ) {
+            this.props.onSetAuthRedirectPath();
+        }
+    }
 
+   
     checkValidity ( value, rules ) {
         let isValid = true;
         if ( !rules ) {
@@ -90,53 +92,9 @@ class Auth extends Component {
         return isValid;
     }
 
-    inputChangedHandler = ( event, controlName ) => {
-        const updatedControls = {
-            ...this.state.controls,
-            [controlName]: {
-                ...this.state.controls[controlName],
-                value: event.target.value,
-                valid: this.checkValidity( event.target.value, this.state.controls[controlName].validation ),
-                touched: true
-            }
-        };
-        this.setState( { controls: updatedControls } );
-    }
-
-    submitHandler = ( event ) => {
-        event.preventDefault();
-        this.props.onAuth( this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup );
-    }
 
 
-
-    // signMessage = () => {
-    //     let message = "testMessage";
-    //     if (window.web3){
-    //         var userEthereumClient = window.web3;
-    //         // sign a message
-    //         userEthereumClient.eth.sign(
-    //             userEthereumClient.eth.coinbase,  // pass the user's public key
-    //             window.web3.sha3(message),  // pass a sha hash of a message
-    //             function(error, data) {  // pass a callback
-    //                 if (error){
-    //                     console.log("An error occured while signing the message.");
-    //                 } else {
-    //                     Helpers.setCookie("signedAuthMessage", data, 2);
-    //                     if(Helpers.getCookie("signedAuthMessage")){
-    //                         console.log("You successfully stored the signed message.");
-    //                     } else {
-    //                         console.log("You did not successfully store the signed message.");
-    //                     };
-    //                 };
-    //             });
-    //     } else {
-    //         console.log(">> You cannot sign the message because Web 3 is not loaded");
-    //     };
-    // }
-
-
-    // METAMASK LOGIN
+       // METAMASK LOGIN
 
    
     // handleAuthenticate = ({ publicAddress, signature }) =>
@@ -151,7 +109,7 @@ class Auth extends Component {
     // }).then(response => response.json());
 
   handleClick = () => {
-    const { onLoggedIn } = false;
+ 
 
     if (!window.web3) {
       window.alert('Please install MetaMask first.');
@@ -241,7 +199,27 @@ handleSignup = ( publicAddress ) => {
         } );
 }
 
+inputChangedHandler = ( event, controlName ) => {
+    const updatedControls = updateObject( this.state.controls, {
+        [controlName]: updateObject( this.state.controls[controlName], {
+            value: event.target.value,
+            valid: checkValidity( event.target.value, this.state.controls[controlName].validation ),
+            touched: true
+        } )
+    } );
+    this.setState( { controls: updatedControls } );
+}
 
+submitHandler = ( event ) => {
+    event.preventDefault();
+    this.props.onAuth( this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup );
+}
+
+switchAuthModeHandler = () => {
+    this.setState( prevState => {
+        return { isSignup: !prevState.isSignup };
+    } );
+}
 
 
     render () {
@@ -277,10 +255,13 @@ handleSignup = ( publicAddress ) => {
             );
         }
 
-        // let authRedirect = null;
-        // if (this.props.isAuthenticated) {
-        //     authRedirect = <Redirect to={this.props.authRedirectPath}/>
-        // }
+        let authRedirect = null;
+        if ( this.props.isAuthenticated ) {
+            authRedirect = <Redirect to={this.props.authRedirectPath} />
+        }
+
+   
+
 
         let metaMask = (  <Button
             clicked={this.handleClick}
@@ -299,6 +280,9 @@ handleSignup = ( publicAddress ) => {
         return (
             <div className="LoginBg">
           <div className='Auth'>
+
+              {authRedirect}
+       
          <p className="LoginTitle">
          Welcome to ReactBurger
          </p>
@@ -313,6 +297,9 @@ handleSignup = ( publicAddress ) => {
 
                      {this.state.loading ? loadingMetaMask : metaMask }
 
+   <Button 
+                    clicked={this.switchAuthModeHandler}
+                    btnType="Danger">SWITCH TO {this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>
 
 
 
@@ -323,21 +310,21 @@ handleSignup = ( publicAddress ) => {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         loading: state.auth.loading,
-//         error: state.auth.error,
-//         isAuthenticated: state.auth.token !== null,
-//         buildingBurger: state.burgerBuilder.building,
-//         authRedirectPath: state.auth.authRedirectPath
-//     };
-// };
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.error,
+        isAuthenticated: state.auth.token !== null,
+        buildingBurger: state.burgerBuilder.building,
+        authRedirectPath: state.auth.authRedirectPath
+    };
+};
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onAuth: ( email, password, isSignup ) => dispatch( actions.auth( email, password, isSignup ) ),
-//         onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
-//     };
-// };
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: ( email, password, isSignup ) => dispatch( actions.auth( email, password, isSignup ) ),
+        onSetAuthRedirectPath: () => dispatch( actions.setAuthRedirectPath( '/' ) )
+    };
+};
 
-export default Auth;
+export default connect( mapStateToProps, mapDispatchToProps )( Auth );
